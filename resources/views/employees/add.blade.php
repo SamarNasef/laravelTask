@@ -62,12 +62,21 @@
    </fieldset>
    	<div class="form-group">
 	   <label>Location</label>
-	   <input type="text" name="locationSearch">
+	   <input type="text" name="locationSearch" id="locationText">
 		<div style="width: 500px; height: 500px;" >
 		{!! Mapper::render() !!}
 		</div>
 	</div>
   <button type="submit" class="btn btn-primary">Add User</button>
 </form>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB73L1RyzXHkT9fZMlnitShWfEkF3bzrVk&libraries=places"></script>
+<script type="text/javascript">
+    google.maps.event.addDomListener(window, 'load', function () {
+        var places = new google.maps.places.Autocomplete(document.getElementById('locationText'));
+        google.maps.event.addListener(places, 'place_changed', function () {
+
+        });
+    });
+</script>
 
 @endsection
